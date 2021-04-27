@@ -1,0 +1,318 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div>
+            <h2>Charts for {{ city_name }} city.</h2>
+        </div>
+        <div>
+            <a class="btn btn-primary active" href="/">Back to main site</a>
+        </div>
+
+        <h2>Сoncentration of CO</h2>
+        <div>
+            <canvas id="coChart"></canvas>
+        </div>
+
+        <h2>Сoncentration of NO</h2>
+        <div>
+            <canvas id="noChart"></canvas>
+        </div>
+
+        <h2>Сoncentration of NO2</h2>
+        <div>
+            <canvas id="no2Chart"></canvas>
+        </div>
+
+        <h2>Сoncentration of O3</h2>
+        <div>
+            <canvas id="o3Chart"></canvas>
+        </div>
+
+        <h2>Сoncentration of SO2</h2>
+        <div>
+            <canvas id="so2Chart"></canvas>
+        </div>
+
+        <h2>Сoncentration of PM2</h2>
+        <div>
+            <canvas id="pm2_5Chart"></canvas>
+        </div>
+
+        <h2>Сoncentration of PM10</h2>
+        <div>
+            <canvas id="pm10Chart"></canvas>
+        </div>
+
+        <h2>Сoncentration of NH3</h2>
+        <div>
+            <canvas id="nh3Chart"></canvas>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script>
+        var canvas = document.getElementById('coChart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'NO [μg/m3]',
+                data: [{% for item in qs %} {{ item.co }}, {% endfor %}],
+                backgroundColor: "rgba(252, 104, 104)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(252, 104, 104,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    },
+                }],
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('noChart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'NO [μg/m3]',
+                data: [{% for item in qs %} {{ item.no }}, {% endfor %}],
+                backgroundColor: "rgba(204, 255, 255)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(204, 255, 255,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('no2Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'NO2 [μg/m3]',
+                data: [{% for item in qs %} {{ item.no2 }}, {% endfor %}],
+                backgroundColor: "rgba(255, 255, 102)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(204, 255, 255,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('o3Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'O3 [μg/m3]',
+                data: [{% for item in qs %} {{ item.o3 }}, {% endfor %}],
+                backgroundColor: "rgba(223, 255, 255)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(204, 255, 255,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('so2Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'SO2 [μg/m3]',
+                data: [{% for item in qs %} {{ item.so2 }}, {% endfor %}],
+                backgroundColor: "rgba(255, 120, 120)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(255, 120, 120,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('pm2_5Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'PM2 [μg/m3]',
+                data: [{% for item in qs %} {{ item.pm2_5 }}, {% endfor %}],
+                backgroundColor: "rgba(247, 199, 131)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(247, 199, 131,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('pm10Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'PM10 [μg/m3]',
+                data: [{% for item in qs %} {{ item.pm10 }}, {% endfor %}],
+                backgroundColor: "rgba(147, 145, 255)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(147, 145, 255,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+    <script>
+        var canvas = document.getElementById('nh3Chart');
+
+        var data = {
+            labels: [{% for item in qs %} '{{ item.date_and_time }}', {% endfor %}],
+            datasets: [{
+                label: 'NH3 [μg/m3]',
+                data: [{% for item in qs %} {{ item.nh3 }}, {% endfor %}],
+                backgroundColor: "rgba(0, 213, 255)"
+            }]
+        };
+        var option = {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    gridLines: {
+                        display: true,
+                        color: "rgba(0, 213, 255,0.2)"
+                    }
+                }],
+                xAxes: [{
+                    gridLines: {
+                        display: true
+                    }
+                }]
+            }
+        };
+
+        var myBarChart = Chart.Line(canvas, {
+            data: data,
+            options: option
+        });
+    </script>
+{% endblock content %}

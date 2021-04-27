@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+        <form method="post" id="post-form">
+            {% csrf_token %}
+            <div>
+                <label>
+                    <input type="text" name="city" id="input" placeholder=" City name" required/>
+                </label>
+            </div>
+            <div>
+                <button class="button is-info">
+                    Add City
+                </button>
+            </div>
+        </form>
+        <div class="content">
+            <p>
+            {% if city != null %}
+                <span>City: {{ city }}</span><br/>
+                <span>Temperature: {{ temperature }} °C</span><br/>
+                <span>Actual weather: {{ description }}</span><br/>
+                <span>Pressure: {{ pressure }} hpa</span><br/>
+                <span>Wind speed: {{ wind_speed }} m/s</span><br/>
+                {% if air_quality == 1 %}
+                    <span>Air quality: excelent </span><br/>
+                {% elif air_quality == 2 %}
+                    <span>Air quality: good </span><br/>
+                {% elif air_quality == 3 %}
+                    <span>Air quality: moderate </span><br/>
+                {% elif air_quality == 4 %}
+                    <span>Air quality: poor </span><br/>
+                {% elif air_quality == 3 %}
+                    <span>Air quality: bad </span><br/>
+                {% endif %}
+            {% else %}
+                <p>Enter city name to display details here</p>
+            {% endif %}
+            </p>
+        </div>
+        <div>
+            {% if city != null %}
+                <a class="btn btn-primary active" href="{% url 'charts' %}">Charts</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
