@@ -38,7 +38,7 @@ def save_api_data(context, pollution_to_json):
 
 
 def index(request):
-    api_key = ''
+    api_key = 'f8d8bdde3a52f8e52515d9a43609d495'
 
     if request.method == 'POST':
         try:
