@@ -73,3 +73,4 @@ class ChartView(TemplateView):
         context["qs"] = Forecast.objects.filter(city=city).order_by('-date_and_time')[:8][::-1]
         context["city_name"] = city
         return context
+
