@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'core',
+    'core.apps.CoreConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -44,7 +45,7 @@ ROOT_URLCONF = 'Air_Quality_API.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,3 +114,5 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'

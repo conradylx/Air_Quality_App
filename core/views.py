@@ -55,23 +55,21 @@ def index(request):
             }
 
             request.session['one'] = context['city']
-            print(request.session['one'])
             save_api_data(context, pollution_to_json)
         except:
             context = {}
     else:
         context = {}
 
-    return render(request, 'core/index.html', context)
+    return render(request, 'index.html', context)
 
 
 class ChartView(TemplateView):
-    template_name = "core/charts.html"
+    template_name = "charts.html"
 
     def get_context_data(self, **kwargs):
         city = self.request.session.get('one')
         context = super().get_context_data(**kwargs)
         context["qs"] = Forecast.objects.filter(city=city).order_by('-date_and_time')[:8][::-1]
         context["city_name"] = city
-        print(context["qs"])
         return context

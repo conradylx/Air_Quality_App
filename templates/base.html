@@ -9,7 +9,11 @@
     <title>Air Quality</title>
     <link rel="stylesheet" href="{% static 'styles/styles.css' %}"/>
 </head>
-<body>
+<p>
+    {% if user.is_authenticated %}
+        <p>Hi, {{ user.username }}</p>
+        <p><a href="{% url 'logout' %}">Log out</a></p>
+    {% endif %}
 {% block content %}
 {% endblock content %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>

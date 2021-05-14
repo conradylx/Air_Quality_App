@@ -10,3 +10,7 @@ You must have the following installed:
 
 To install all dependencies please run:
 - pip install -r requirements.txt
+
+## User credentials
+- Login: user
+- Password: Useruser1@
