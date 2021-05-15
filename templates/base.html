@@ -3,16 +3,17 @@
 <html lang="en">
 {% include 'head.html' %}
 <body>
-<p>
-    {% if user.is_authenticated %}
-        <p>Hi, {{ user.username }}</p>
-        <p><a href="{% url 'logout' %}">Log out</a></p>
-    {% else %}
-        <p>You're not logged in.</p>
-        <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signup' %}">Sign up</a>
-    {% endif %}
-{% block content %}
-{% endblock content %}
+<div class="container">
+    <p>
+        {% if user.is_authenticated %}
+            <p>Hi, {{ user.username }}</p>
+            <p><a href="{% url 'logout' %}">Log out</a></p>
+        {% else %}
+            <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+    {% block content %}
+    {% endblock content %}
+</div>
 {% include 'scripts.html' %}
 </body>
 </html>

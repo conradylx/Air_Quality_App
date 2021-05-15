@@ -36,6 +36,8 @@
                     {% elif air_quality == 3 %}
                         <span>Air quality: bad </span><br/>
                     {% endif %}
+                {% elif city == null and not user.is_authenticated %}
+                    <p>You are not logged in to display charts</p>
                 {% else %}
                     <p>Enter city name to display details here</p>
                 {% endif %}
